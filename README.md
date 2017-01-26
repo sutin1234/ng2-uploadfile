@@ -9,16 +9,25 @@ cd ng2-uploadfile
 npm install
 
 ## create file server to upload file
-## <?php
+
+<?php
+
 	header('Access-Control-Allow-Origin: *');
-	$files = $_FILES['file'];
-	if(move_uploaded_file($files['tmp_name'],$files['name'])){
-		chmod($_FILES['file']['name'],777); // set chmod
-		chmod($_FILES['file']['name'],0777); // set chmod
+
+	if(copy($_FILES['file']['tmp_name'],$_FILES['file']['name'])){
+
+		chmod($_FILES['file']['name'],777);
+
+		chmod($_FILES['file']['name'],0777);
+
 		echo 1;
+
 	}else{
+
 		echo 'Error! Uploaded files';
+
 	}
+
 ?>
 
 ## Running 
