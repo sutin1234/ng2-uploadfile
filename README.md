@@ -13,6 +13,8 @@ npm install
 	header('Access-Control-Allow-Origin: *');
 	$files = $_FILES['file'];
 	if(move_uploaded_file($files['tmp_name'],$files['name'])){
+		chmod($_FILES['file']['name'],777); // set chmod
+		chmod($_FILES['file']['name'],0777); // set chmod
 		echo 1;
 	}else{
 		echo 'Error! Uploaded files';
